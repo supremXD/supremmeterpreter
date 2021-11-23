@@ -150,3 +150,4 @@ Application Controller Commands
     app_list       List installed apps in the device
     app_run        Start Main Activty for package name
     app_uninstall  Request to uninstall application
+    
